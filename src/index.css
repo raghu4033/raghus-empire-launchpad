@@ -9,86 +9,86 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 265 85% 15%;
+    --foreground: 215 50% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 265 85% 15%;
+    --card-foreground: 215 50% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 265 85% 15%;
+    --popover-foreground: 215 50% 12%;
 
-    --primary: 265 85% 15%;
-    --primary-foreground: 45 100% 65%;
+    --primary: 215 50% 12%;
+    --primary-foreground: 43 96% 56%;
 
-    --secondary: 45 100% 65%;
-    --secondary-foreground: 265 85% 15%;
+    --secondary: 43 96% 56%;
+    --secondary-foreground: 215 50% 12%;
 
-    --muted: 45 50% 85%;
-    --muted-foreground: 265 40% 35%;
+    --muted: 210 20% 88%;
+    --muted-foreground: 215 25% 35%;
 
-    --accent: 45 100% 65%;
-    --accent-foreground: 265 85% 15%;
+    --accent: 43 96% 56%;
+    --accent-foreground: 215 50% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 265 30% 80%;
-    --input: 265 30% 80%;
-    --ring: 265 85% 15%;
+    --border: 215 20% 85%;
+    --input: 215 20% 85%;
+    --ring: 215 50% 12%;
 
     --radius: 1rem;
 
-    /* Custom tokens for Raghu's Empire - ROYAL KING THEME */
-    --empire-purple: 265 85% 15%;
-    --empire-purple-deep: 270 90% 8%;
-    --empire-purple-mid: 265 70% 25%;
-    --empire-purple-light: 265 50% 45%;
-    --empire-gold: 45 100% 65%;
-    --empire-gold-bright: 45 100% 70%;
-    --empire-gold-dark: 42 90% 55%;
+    /* Custom tokens - PROFESSIONAL EXECUTIVE THEME */
+    --empire-navy: 215 50% 12%;
+    --empire-navy-deep: 220 55% 8%;
+    --empire-navy-mid: 215 45% 18%;
+    --empire-navy-light: 215 35% 28%;
+    --empire-gold: 43 96% 56%;
+    --empire-gold-elegant: 40 90% 50%;
+    --empire-gold-muted: 43 75% 48%;
     
-    /* Gradients - POWERFUL & ENERGETIC */
-    --gradient-empire: linear-gradient(135deg, hsl(270 90% 8%) 0%, hsl(265 85% 15%) 50%, hsl(270 80% 20%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(45 100% 65%) 0%, hsl(42 100% 60%) 50%, hsl(40 95% 55%) 100%);
-    --gradient-royal: linear-gradient(135deg, hsl(265 85% 15%) 0%, hsl(280 70% 25%) 100%);
-    --gradient-radial: radial-gradient(circle at 50% 50%, hsl(45 100% 65% / 0.15) 0%, transparent 70%);
-    --gradient-power: radial-gradient(circle at 30% 30%, hsl(280 70% 25% / 0.3) 0%, transparent 60%);
+    /* Gradients - PROFESSIONAL & POWERFUL */
+    --gradient-empire: linear-gradient(135deg, hsl(220 55% 8%) 0%, hsl(215 50% 12%) 50%, hsl(215 45% 18%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%) 0%, hsl(40 90% 50%) 100%);
+    --gradient-royal: linear-gradient(135deg, hsl(215 50% 12%) 0%, hsl(215 45% 22%) 100%);
+    --gradient-radial: radial-gradient(circle at 50% 50%, hsl(43 96% 56% / 0.08) 0%, transparent 70%);
+    --gradient-power: radial-gradient(circle at 30% 30%, hsl(215 45% 18% / 0.3) 0%, transparent 60%);
     
-    /* Shadows - LUXURY & POWER */
-    --shadow-glow: 0 0 40px hsl(45 100% 65% / 0.4);
-    --shadow-glass: 0 8px 32px hsl(265 85% 15% / 0.2);
-    --shadow-luxury: 0 20px 60px hsl(265 85% 15% / 0.25);
-    --shadow-gold: 0 0 30px hsl(45 100% 65% / 0.5);
+    /* Shadows - EXECUTIVE LUXURY */
+    --shadow-glow: 0 0 40px hsl(43 96% 56% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(215 50% 12% / 0.15);
+    --shadow-luxury: 0 20px 60px hsl(215 50% 12% / 0.2);
+    --shadow-gold: 0 0 30px hsl(43 96% 56% / 0.4);
   }
 
   .dark {
-    --background: 265 85% 8%;
-    --foreground: 45 100% 65%;
+    --background: 215 50% 8%;
+    --foreground: 43 96% 56%;
 
-    --card: 265 85% 10%;
-    --card-foreground: 45 100% 65%;
+    --card: 215 50% 10%;
+    --card-foreground: 43 96% 56%;
 
-    --popover: 265 85% 10%;
-    --popover-foreground: 45 100% 65%;
+    --popover: 215 50% 10%;
+    --popover-foreground: 43 96% 56%;
 
-    --primary: 45 100% 65%;
-    --primary-foreground: 265 85% 15%;
+    --primary: 43 96% 56%;
+    --primary-foreground: 215 50% 12%;
 
-    --secondary: 265 70% 20%;
-    --secondary-foreground: 45 100% 65%;
+    --secondary: 215 45% 18%;
+    --secondary-foreground: 43 96% 56%;
 
-    --muted: 265 40% 25%;
-    --muted-foreground: 45 50% 70%;
+    --muted: 215 35% 22%;
+    --muted-foreground: 43 75% 70%;
 
-    --accent: 265 70% 20%;
-    --accent-foreground: 45 100% 65%;
+    --accent: 215 45% 18%;
+    --accent-foreground: 43 96% 56%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 45 100% 65%;
+    --destructive-foreground: 43 96% 56%;
 
-    --border: 265 40% 25%;
-    --input: 265 40% 25%;
-    --ring: 45 100% 65%;
+    --border: 215 35% 22%;
+    --input: 215 35% 22%;
+    --ring: 43 96% 56%;
   }
 }
 

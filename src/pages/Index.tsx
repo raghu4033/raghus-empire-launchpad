@@ -1,9 +1,47 @@
 import { useState } from "react";
-import { Crown, Lock, Sparkles, Instagram, Linkedin, Youtube, ArrowRight } from "lucide-react";
+import { Crown, Lock, Sparkles, Instagram, Linkedin, Youtube, ArrowRight, ExternalLink, Globe, ShoppingBag, Layout, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
+
+const websites = [
+  {
+    name: "Harshad Satasiya",
+    url: "https://harshadsatasiya.com",
+    description: "Personal Portfolio & Professional Hub",
+    icon: Globe,
+    color: "from-blue-500 to-cyan-500"
+  },
+  {
+    name: "Raghu's Enterprise",
+    url: "https://raghusenterprise.com",
+    description: "Business Ventures & Corporate Solutions",
+    icon: Layout,
+    color: "from-purple-500 to-pink-500"
+  },
+  {
+    name: "JewelFox Store",
+    url: "https://jewelfoxstore.com",
+    description: "Premium Jewelry & Luxury Accessories",
+    icon: ShoppingBag,
+    color: "from-amber-500 to-orange-500"
+  },
+  {
+    name: "Pattrnly",
+    url: "https://pattrnly.com",
+    description: "Design Patterns & Creative Solutions",
+    icon: Code,
+    color: "from-green-500 to-emerald-500"
+  },
+  {
+    name: "Woodeen",
+    url: "https://woodeen.com",
+    description: "Sustainable Wood Products & Craftsmanship",
+    icon: Sparkles,
+    color: "from-yellow-500 to-amber-600"
+  }
+];
 
 const Index = () => {
   const [password, setPassword] = useState("");
@@ -49,8 +87,11 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Title */}
-          <div className="text-center mb-8 animate-fade-in-delay">
+          {/* Welcome Message */}
+          <div className="text-center mb-6 animate-fade-in-delay">
+            <div className="inline-block px-6 py-2 rounded-full glassmorphism border-secondary/30 mb-4">
+              <span className="text-secondary/90 text-sm font-medium">👋 Welcome, Visitor!</span>
+            </div>
             <h1 className="text-5xl font-heading font-bold text-secondary mb-3 tracking-tight">
               Raghu's Empire
             </h1>
@@ -141,7 +182,7 @@ const Index = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,244,219,0.1)_0%,transparent_50%)]" />
       <div className="absolute top-20 right-20 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -150,113 +191,83 @@ const Index = () => {
               Welcome to Raghu's Empire
             </h1>
           </div>
-          <p className="text-2xl text-secondary/90 font-body font-light">
+          <p className="text-2xl text-secondary/90 font-body font-light mb-4">
             Where Ideas Become Brands
+          </p>
+          <p className="text-secondary/70 text-base max-w-2xl mx-auto">
+            Choose your destination from our collection of innovative brands and ventures
           </p>
         </div>
 
-        {/* Dashboard Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <Card className="glassmorphism border-secondary/30 hover:border-secondary/50 transition-all duration-300 animate-fade-in group hover:shadow-2xl">
-            <CardHeader>
-              <CardTitle className="text-secondary text-2xl flex items-center gap-2">
-                <Sparkles className="w-6 h-6 group-hover:animate-spin" />
-                My Startups
-              </CardTitle>
-              <CardDescription className="text-secondary/70 text-base">
-                Innovative ventures changing the game
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-secondary/80 font-body">
-                Explore the ecosystem of groundbreaking startups built to solve real-world problems 
-                and create lasting impact.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="glassmorphism border-secondary/30 hover:border-secondary/50 transition-all duration-300 animate-fade-in-delay group hover:shadow-2xl">
-            <CardHeader>
-              <CardTitle className="text-secondary text-2xl flex items-center gap-2">
-                <Sparkles className="w-6 h-6 group-hover:animate-spin" />
-                My Projects
-              </CardTitle>
-              <CardDescription className="text-secondary/70 text-base">
-                Creative experiments and innovations
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-secondary/80 font-body">
-                A collection of passion projects, experiments, and creative endeavors pushing 
-                the boundaries of what's possible.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="glassmorphism border-secondary/30 hover:border-secondary/50 transition-all duration-300 animate-fade-in group hover:shadow-2xl">
-            <CardHeader>
-              <CardTitle className="text-secondary text-2xl flex items-center gap-2">
-                <Sparkles className="w-6 h-6 group-hover:animate-spin" />
-                About Raghu
-              </CardTitle>
-              <CardDescription className="text-secondary/70 text-base">
-                The mind behind the empire
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-secondary/80 font-body">
-                An entrepreneur, innovator, and visionary dedicated to building brands that matter 
-                and creating value that lasts.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="glassmorphism border-secondary/30 hover:border-secondary/50 transition-all duration-300 animate-fade-in-delay group hover:shadow-2xl">
-            <CardHeader>
-              <CardTitle className="text-secondary text-2xl flex items-center gap-2">
-                <Sparkles className="w-6 h-6 group-hover:animate-spin" />
-                Contact
-              </CardTitle>
-              <CardDescription className="text-secondary/70 text-base">
-                Let's build something together
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-secondary/80 font-body mb-4">
-                Have an idea? Want to collaborate? Reach out and let's turn visions into reality.
-              </p>
-              <div className="flex gap-3">
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/30 transition-all duration-300 hover:scale-110"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/30 transition-all duration-300 hover:scale-110"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a 
-                  href="https://youtube.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-secondary/20 border border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/30 transition-all duration-300 hover:scale-110"
-                >
-                  <Youtube className="w-5 h-5" />
-                </a>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Website Directory Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {websites.map((site, index) => {
+            const Icon = site.icon;
+            return (
+              <a
+                key={site.name}
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}
+              >
+                <Card className="glassmorphism border-secondary/30 hover:border-secondary/60 transition-all duration-500 hover:shadow-2xl hover:scale-105 cursor-pointer h-full">
+                  <CardHeader>
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${site.color} flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-500`}>
+                      <Icon className="w-7 h-7 text-white" />
+                    </div>
+                    <CardTitle className="text-secondary text-xl flex items-center gap-2 group-hover:text-secondary/90 transition-colors">
+                      {site.name}
+                      <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </CardTitle>
+                    <CardDescription className="text-secondary/70">
+                      {site.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <span className="text-secondary/50 text-sm font-body">{site.url.replace('https://', '')}</span>
+                      <ArrowRight className="w-5 h-5 text-secondary/50 group-hover:text-secondary group-hover:translate-x-1 transition-all" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
+            );
+          })}
         </div>
 
-        {/* Footer */}
-        <div className="text-center mt-12 animate-fade-in-delay">
+        {/* Social Links Section */}
+        <div className="text-center animate-fade-in-delay">
+          <p className="text-secondary/70 font-body mb-4">Connect with Raghu's Empire</p>
+          <div className="flex justify-center gap-4 mb-8">
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-12 h-12 rounded-full glassmorphism border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/20 transition-all duration-300 hover:scale-110"
+            >
+              <Instagram className="w-6 h-6" />
+            </a>
+            <a 
+              href="https://linkedin.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-12 h-12 rounded-full glassmorphism border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/20 transition-all duration-300 hover:scale-110"
+            >
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a 
+              href="https://youtube.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-12 h-12 rounded-full glassmorphism border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/20 transition-all duration-300 hover:scale-110"
+            >
+              <Youtube className="w-6 h-6" />
+            </a>
+          </div>
+
+          {/* Footer */}
           <p className="text-secondary/60 font-body text-sm">
             © 2025 Raghu's Empire. Where ambition meets execution.
           </p>

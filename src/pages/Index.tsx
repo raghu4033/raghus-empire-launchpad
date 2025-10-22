@@ -87,11 +87,8 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Welcome Message */}
-          <div className="text-center mb-6 animate-fade-in-delay">
-            <div className="inline-block px-6 py-2 rounded-full glassmorphism border-secondary/30 mb-4">
-              <span className="text-secondary/90 text-sm font-medium">👋 Welcome, Visitor!</span>
-            </div>
+          {/* Title */}
+          <div className="text-center mb-8 animate-fade-in-delay">
             <h1 className="text-5xl font-heading font-bold text-secondary mb-3 tracking-tight">
               Raghu's Empire
             </h1>
@@ -162,6 +159,22 @@ const Index = () => {
             >
               <Youtube className="w-5 h-5" />
             </a>
+          </div>
+
+          {/* Brand Names */}
+          <div className="text-center mt-8 animate-fade-in-delay">
+            <p className="text-secondary/40 text-xs font-body mb-2">Our Brands</p>
+            <div className="flex flex-wrap justify-center gap-3 text-secondary/50 text-xs font-body">
+              <span>Harshadsatasiya.com</span>
+              <span className="text-secondary/30">•</span>
+              <span>RaghusEnterprise.com</span>
+              <span className="text-secondary/30">•</span>
+              <span>JewelFoxStore.com</span>
+              <span className="text-secondary/30">•</span>
+              <span>Pattrnly.com</span>
+              <span className="text-secondary/30">•</span>
+              <span>Woodeen.com</span>
+            </div>
           </div>
         </div>
 

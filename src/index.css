@@ -9,80 +9,86 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 168 95% 13%;
+    --foreground: 265 85% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 168 95% 13%;
+    --card-foreground: 265 85% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 168 95% 13%;
+    --popover-foreground: 265 85% 15%;
 
-    --primary: 168 95% 13%;
-    --primary-foreground: 45 67% 92%;
+    --primary: 265 85% 15%;
+    --primary-foreground: 45 100% 65%;
 
-    --secondary: 45 67% 92%;
-    --secondary-foreground: 168 95% 13%;
+    --secondary: 45 100% 65%;
+    --secondary-foreground: 265 85% 15%;
 
-    --muted: 45 40% 88%;
-    --muted-foreground: 168 40% 35%;
+    --muted: 45 50% 85%;
+    --muted-foreground: 265 40% 35%;
 
-    --accent: 45 67% 92%;
-    --accent-foreground: 168 95% 13%;
+    --accent: 45 100% 65%;
+    --accent-foreground: 265 85% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 168 30% 85%;
-    --input: 168 30% 85%;
-    --ring: 168 95% 13%;
+    --border: 265 30% 80%;
+    --input: 265 30% 80%;
+    --ring: 265 85% 15%;
 
     --radius: 1rem;
 
-    /* Custom tokens for Raghu's Empire */
-    --empire-emerald: 168 95% 13%;
-    --empire-gold: 45 67% 92%;
-    --empire-emerald-light: 168 70% 25%;
-    --empire-gold-dark: 45 50% 75%;
+    /* Custom tokens for Raghu's Empire - ROYAL KING THEME */
+    --empire-purple: 265 85% 15%;
+    --empire-purple-deep: 270 90% 8%;
+    --empire-purple-mid: 265 70% 25%;
+    --empire-purple-light: 265 50% 45%;
+    --empire-gold: 45 100% 65%;
+    --empire-gold-bright: 45 100% 70%;
+    --empire-gold-dark: 42 90% 55%;
     
-    /* Gradients */
-    --gradient-empire: linear-gradient(135deg, hsl(168 95% 13%) 0%, hsl(168 70% 18%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(45 67% 92%) 0%, hsl(45 50% 85%) 100%);
-    --gradient-radial: radial-gradient(circle at 50% 50%, hsl(168 95% 13% / 0.05) 0%, transparent 70%);
+    /* Gradients - POWERFUL & ENERGETIC */
+    --gradient-empire: linear-gradient(135deg, hsl(270 90% 8%) 0%, hsl(265 85% 15%) 50%, hsl(270 80% 20%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 65%) 0%, hsl(42 100% 60%) 50%, hsl(40 95% 55%) 100%);
+    --gradient-royal: linear-gradient(135deg, hsl(265 85% 15%) 0%, hsl(280 70% 25%) 100%);
+    --gradient-radial: radial-gradient(circle at 50% 50%, hsl(45 100% 65% / 0.15) 0%, transparent 70%);
+    --gradient-power: radial-gradient(circle at 30% 30%, hsl(280 70% 25% / 0.3) 0%, transparent 60%);
     
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(168 95% 13% / 0.3);
-    --shadow-glass: 0 8px 32px hsl(168 95% 13% / 0.1);
-    --shadow-luxury: 0 20px 60px hsl(168 95% 13% / 0.15);
+    /* Shadows - LUXURY & POWER */
+    --shadow-glow: 0 0 40px hsl(45 100% 65% / 0.4);
+    --shadow-glass: 0 8px 32px hsl(265 85% 15% / 0.2);
+    --shadow-luxury: 0 20px 60px hsl(265 85% 15% / 0.25);
+    --shadow-gold: 0 0 30px hsl(45 100% 65% / 0.5);
   }
 
   .dark {
-    --background: 168 95% 6%;
-    --foreground: 45 67% 92%;
+    --background: 265 85% 8%;
+    --foreground: 45 100% 65%;
 
-    --card: 168 95% 8%;
-    --card-foreground: 45 67% 92%;
+    --card: 265 85% 10%;
+    --card-foreground: 45 100% 65%;
 
-    --popover: 168 95% 8%;
-    --popover-foreground: 45 67% 92%;
+    --popover: 265 85% 10%;
+    --popover-foreground: 45 100% 65%;
 
-    --primary: 45 67% 92%;
-    --primary-foreground: 168 95% 13%;
+    --primary: 45 100% 65%;
+    --primary-foreground: 265 85% 15%;
 
-    --secondary: 168 70% 15%;
-    --secondary-foreground: 45 67% 92%;
+    --secondary: 265 70% 20%;
+    --secondary-foreground: 45 100% 65%;
 
-    --muted: 168 40% 20%;
-    --muted-foreground: 45 40% 70%;
+    --muted: 265 40% 25%;
+    --muted-foreground: 45 50% 70%;
 
-    --accent: 168 70% 15%;
-    --accent-foreground: 45 67% 92%;
+    --accent: 265 70% 20%;
+    --accent-foreground: 45 100% 65%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 45 67% 92%;
+    --destructive-foreground: 45 100% 65%;
 
-    --border: 168 40% 20%;
-    --input: 168 40% 20%;
-    --ring: 45 67% 92%;
+    --border: 265 40% 25%;
+    --input: 265 40% 25%;
+    --ring: 45 100% 65%;
   }
 }
 
@@ -107,7 +113,7 @@ All colors MUST be HSL.
   }
   
   .glow-text {
-    text-shadow: 0 0 20px hsl(var(--empire-emerald) / 0.5);
+    text-shadow: 0 0 20px hsl(var(--empire-gold) / 0.6), 0 0 40px hsl(var(--empire-gold) / 0.3);
   }
   
   .animate-shimmer {
@@ -132,10 +138,10 @@ All colors MUST be HSL.
   
   @keyframes glow {
     0%, 100% {
-      filter: drop-shadow(0 0 20px hsl(var(--empire-emerald) / 0.5));
+      filter: drop-shadow(0 0 20px hsl(var(--empire-gold) / 0.6));
     }
     50% {
-      filter: drop-shadow(0 0 30px hsl(var(--empire-emerald) / 0.8));
+      filter: drop-shadow(0 0 35px hsl(var(--empire-gold) / 0.9));
     }
   }
   

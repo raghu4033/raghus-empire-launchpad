@@ -90,81 +90,62 @@ const Index = () => {
 
           {/* Title */}
           <div className="text-center mb-10 animate-fade-in-delay">
-            <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground mb-4 tracking-tight">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-3 tracking-tight">
               Raghu's Empire
             </h1>
-            <p className="text-muted-foreground text-xl font-body mb-3 max-w-md mx-auto">
-              Building Tomorrow's Leading Brands
+            <p className="text-xl md:text-2xl font-heading font-light text-foreground/90 mb-4 italic">
+              Where Ideas Become Empire
             </p>
-            <div className="inline-flex items-center gap-2 text-primary/80 text-sm font-medium mt-2">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span>Premium Access Portal</span>
+            <div className="max-w-md mx-auto space-y-3 mb-6">
+              <p className="text-muted-foreground text-base font-body">
+                A creative powerhouse of startups and innovations by Raghu.
+              </p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+                <span className="text-primary font-medium text-sm">Launching Soon</span>
+                <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+              </div>
             </div>
           </div>
 
           {/* Password Form */}
-          <Card className={`bg-card/95 border-border backdrop-blur-sm shadow-2xl ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
+          <Card className={`bg-card/95 border-border backdrop-blur-sm shadow-2xl hover:shadow-primary/20 transition-shadow duration-500 ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
             <CardHeader className="text-center pb-6">
               <div className="flex justify-center mb-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Lock className="w-6 h-6 text-primary" />
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 flex items-center justify-center ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
+                  <Lock className="w-7 h-7 text-primary" />
                 </div>
               </div>
-              <CardTitle className="text-foreground text-2xl font-heading">Secure Access</CardTitle>
+              <CardTitle className="text-foreground text-2xl font-heading mb-2">Premium Access</CardTitle>
               <CardDescription className="text-muted-foreground font-body">
-                Enter your credentials to continue
+                Enter credentials to unlock your empire
               </CardDescription>
             </CardHeader>
             <CardContent className="pb-8">
               <form onSubmit={handlePasswordSubmit} className="space-y-5">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground/80">Password</label>
+                  <label className="text-sm font-medium text-foreground/80 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Password
+                  </label>
                   <Input
                     type="password"
                     placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 h-11"
+                    className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 h-12 transition-all duration-300"
                   />
                 </div>
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 h-11"
+                  className="w-full bg-gradient-to-r from-primary via-accent to-primary bg-size-200 bg-pos-0 hover:bg-pos-100 text-primary-foreground font-semibold transition-all duration-500 hover:shadow-lg hover:shadow-primary/40 h-12 text-base"
                 >
-                  Access Empire
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  Unlock Empire
+                  <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </form>
             </CardContent>
           </Card>
-
-          {/* Social Links */}
-          <div className="flex justify-center gap-4 mt-10 animate-fade-in-delay">
-            <a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 hover:scale-110 shadow-sm"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 hover:scale-110 shadow-sm"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a 
-              href="https://youtube.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 hover:scale-110 shadow-sm"
-            >
-              <Youtube className="w-5 h-5" />
-            </a>
-          </div>
         </div>
 
         <style>{`

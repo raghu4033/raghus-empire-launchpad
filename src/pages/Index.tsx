@@ -90,12 +90,9 @@ const Index = () => {
 
           {/* Title */}
           <div className="text-center mb-10 animate-fade-in-delay">
-            <h1 className="text-5xl md:text-6xl font-heading font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-3 tracking-tight">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4 tracking-tight">
               Raghu's Empire
             </h1>
-            <p className="text-xl md:text-2xl font-heading font-light text-foreground/90 mb-4 italic">
-              Where Ideas Become Empire
-            </p>
             <div className="max-w-md mx-auto space-y-3 mb-6">
               <p className="text-muted-foreground text-base font-body">
                 A creative powerhouse of startups and innovations by Raghu.
@@ -132,6 +129,9 @@ const Index = () => {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </form>
+              <p className="text-center text-muted-foreground text-xs mt-4 font-body">
+                Where Ideas Become Empire
+              </p>
             </CardContent>
           </Card>
         </div>

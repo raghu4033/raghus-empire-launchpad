@@ -109,39 +109,27 @@ const Index = () => {
           </div>
 
           {/* Password Form */}
-          <Card className={`bg-card/95 border-border backdrop-blur-sm shadow-2xl hover:shadow-primary/20 transition-shadow duration-500 ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
-            <CardHeader className="text-center pb-6">
-              <div className="flex justify-center mb-4">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 flex items-center justify-center ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
-                  <Lock className="w-7 h-7 text-primary" />
-                </div>
+          <Card className={`bg-card/95 border-border backdrop-blur-sm shadow-xl ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
+            <CardHeader className="text-center pb-4">
+              <div className="flex justify-center mb-3">
+                <Lock className="w-6 h-6 text-primary" />
               </div>
-              <CardTitle className="text-foreground text-2xl font-heading mb-2">Premium Access</CardTitle>
-              <CardDescription className="text-muted-foreground font-body">
-                Enter credentials to unlock your empire
-              </CardDescription>
             </CardHeader>
-            <CardContent className="pb-8">
-              <form onSubmit={handlePasswordSubmit} className="space-y-5">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground/80 flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    Password
-                  </label>
-                  <Input
-                    type="password"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 h-12 transition-all duration-300"
-                  />
-                </div>
+            <CardContent className="pb-6">
+              <form onSubmit={handlePasswordSubmit} className="space-y-4">
+                <Input
+                  type="password"
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 h-11"
+                />
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-primary via-accent to-primary bg-size-200 bg-pos-0 hover:bg-pos-100 text-primary-foreground font-semibold transition-all duration-500 hover:shadow-lg hover:shadow-primary/40 h-12 text-base"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium transition-all duration-300 h-11"
                 >
-                  Unlock Empire
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  Continue
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </form>
             </CardContent>

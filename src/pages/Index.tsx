@@ -70,64 +70,68 @@ const Index = () => {
 
   if (!isUnlocked) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
-        {/* Hacker Theme Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,65,0.05)_0%,transparent_50%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(0deg,transparent_24%,rgba(0,255,65,0.05)_25%,rgba(0,255,65,0.05)_26%,transparent_27%,transparent_74%,rgba(0,255,65,0.05)_75%,rgba(0,255,65,0.05)_76%,transparent_77%,transparent)] bg-[length:50px_50px]" />
-        <div className="absolute top-20 left-20 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+      <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background flex items-center justify-center p-4 relative overflow-hidden">
+        {/* Professional Background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(var(--primary-rgb),0.1)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(var(--accent-rgb),0.05)_0%,transparent_50%)]" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
 
         <div className="relative z-10 w-full max-w-md">
           {/* Logo & Crown */}
           <div className="flex flex-col items-center mb-8 animate-fade-in">
             <div className="relative mb-4">
-              <Lock className="w-12 h-12 text-green-500 mb-2 animate-pulse" />
+              <Crown className="w-16 h-16 text-primary mb-2" />
             </div>
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-2xl shadow-green-500/50 mb-6 border border-green-400/30">
-              <span className="text-4xl font-mono font-bold text-black">R</span>
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary via-primary/90 to-accent flex items-center justify-center shadow-2xl shadow-primary/30 mb-6 border-2 border-primary/20">
+              <span className="text-5xl font-heading font-bold text-primary-foreground">R</span>
             </div>
           </div>
 
           {/* Title */}
-          <div className="text-center mb-8 animate-fade-in-delay">
-            <h1 className="text-5xl font-mono font-bold text-green-500 mb-3 tracking-tight drop-shadow-[0_0_10px_rgba(34,197,94,0.5)]">
-              {'>'} RAGHU'S_EMPIRE
+          <div className="text-center mb-10 animate-fade-in-delay">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground mb-4 tracking-tight">
+              Raghu's Empire
             </h1>
-            <p className="text-green-400/80 text-lg font-mono mb-2">
-              $ sudo access_empire --auth required
+            <p className="text-muted-foreground text-xl font-body mb-3 max-w-md mx-auto">
+              Building Tomorrow's Leading Brands
             </p>
-            <div className="inline-flex items-center gap-2 text-green-500/90 text-sm font-mono mt-4">
-              <span className="animate-pulse">[</span>
-              <span>SYSTEM_INITIALIZING</span>
-              <span className="animate-pulse">]</span>
+            <div className="inline-flex items-center gap-2 text-primary/80 text-sm font-medium mt-2">
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span>Premium Access Portal</span>
             </div>
           </div>
 
           {/* Password Form */}
-          <Card className={`bg-black/80 border-green-500/30 backdrop-blur-sm ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
-            <CardHeader className="text-center">
-              <div className="flex justify-center mb-3">
-                <Lock className="w-6 h-6 text-green-500" />
+          <Card className={`bg-card/95 border-border backdrop-blur-sm shadow-2xl ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
+            <CardHeader className="text-center pb-6">
+              <div className="flex justify-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Lock className="w-6 h-6 text-primary" />
+                </div>
               </div>
-              <CardTitle className="text-green-500 text-xl font-mono">{'>'} ACCESS_REQUIRED</CardTitle>
-              <CardDescription className="text-green-400/70 font-mono">
-                $ enter credentials to proceed
+              <CardTitle className="text-foreground text-2xl font-heading">Secure Access</CardTitle>
+              <CardDescription className="text-muted-foreground font-body">
+                Enter your credentials to continue
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handlePasswordSubmit} className="space-y-4">
-                <Input
-                  type="password"
-                  placeholder="********"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="bg-black/50 border-green-500/50 text-green-400 placeholder:text-green-500/30 focus:border-green-500 focus:ring-green-500/20 font-mono"
-                />
+            <CardContent className="pb-8">
+              <form onSubmit={handlePasswordSubmit} className="space-y-5">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-foreground/80">Password</label>
+                  <Input
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 h-11"
+                  />
+                </div>
                 <Button 
                   type="submit" 
-                  className="w-full bg-green-500 text-black hover:bg-green-400 font-mono font-bold transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 h-11"
                 >
-                  {'>'} AUTHENTICATE
+                  Access Empire
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </form>
@@ -135,12 +139,12 @@ const Index = () => {
           </Card>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-4 mt-8 animate-fade-in-delay">
+          <div className="flex justify-center gap-4 mt-10 animate-fade-in-delay">
             <a 
               href="https://instagram.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-black/50 border border-green-500/30 flex items-center justify-center text-green-500 hover:bg-green-500/20 hover:border-green-500/60 transition-all duration-300 hover:scale-110"
+              className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 hover:scale-110 shadow-sm"
             >
               <Instagram className="w-5 h-5" />
             </a>
@@ -148,7 +152,7 @@ const Index = () => {
               href="https://linkedin.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-black/50 border border-green-500/30 flex items-center justify-center text-green-500 hover:bg-green-500/20 hover:border-green-500/60 transition-all duration-300 hover:scale-110"
+              className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 hover:scale-110 shadow-sm"
             >
               <Linkedin className="w-5 h-5" />
             </a>
@@ -156,7 +160,7 @@ const Index = () => {
               href="https://youtube.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-black/50 border border-green-500/30 flex items-center justify-center text-green-500 hover:bg-green-500/20 hover:border-green-500/60 transition-all duration-300 hover:scale-110"
+              className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 hover:scale-110 shadow-sm"
             >
               <Youtube className="w-5 h-5" />
             </a>

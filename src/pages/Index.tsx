@@ -70,63 +70,64 @@ const Index = () => {
 
   if (!isUnlocked) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary via-primary to-primary/90 flex items-center justify-center p-4 relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,244,219,0.1)_0%,transparent_50%)]" />
-        <div className="absolute top-20 left-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+      <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
+        {/* Hacker Theme Background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,65,0.05)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(0deg,transparent_24%,rgba(0,255,65,0.05)_25%,rgba(0,255,65,0.05)_26%,transparent_27%,transparent_74%,rgba(0,255,65,0.05)_75%,rgba(0,255,65,0.05)_76%,transparent_77%,transparent)] bg-[length:50px_50px]" />
+        <div className="absolute top-20 left-20 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
 
         <div className="relative z-10 w-full max-w-md">
           {/* Logo & Crown */}
           <div className="flex flex-col items-center mb-8 animate-fade-in">
-            <div className="relative mb-4 animate-glow">
-              <Crown className="w-12 h-12 text-secondary mb-2" />
+            <div className="relative mb-4">
+              <Lock className="w-12 h-12 text-green-500 mb-2 animate-pulse" />
             </div>
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-2xl mb-6">
-              <span className="text-4xl font-heading font-bold text-primary">R</span>
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-2xl shadow-green-500/50 mb-6 border border-green-400/30">
+              <span className="text-4xl font-mono font-bold text-black">R</span>
             </div>
           </div>
 
           {/* Title */}
           <div className="text-center mb-8 animate-fade-in-delay">
-            <h1 className="text-5xl font-heading font-bold text-secondary mb-3 tracking-tight">
-              Raghu's Empire
+            <h1 className="text-5xl font-mono font-bold text-green-500 mb-3 tracking-tight drop-shadow-[0_0_10px_rgba(34,197,94,0.5)]">
+              {'>'} RAGHU'S_EMPIRE
             </h1>
-            <p className="text-secondary/80 text-lg font-body mb-2">
-              A creative powerhouse of startups and innovations by Raghu.
+            <p className="text-green-400/80 text-lg font-mono mb-2">
+              $ sudo access_empire --auth required
             </p>
-            <div className="inline-flex items-center gap-2 text-secondary/90 text-sm font-medium mt-4 animate-shimmer">
-              <Sparkles className="w-4 h-4" />
-              <span>Launching Soon</span>
-              <Sparkles className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 text-green-500/90 text-sm font-mono mt-4">
+              <span className="animate-pulse">[</span>
+              <span>SYSTEM_INITIALIZING</span>
+              <span className="animate-pulse">]</span>
             </div>
           </div>
 
           {/* Password Form */}
-          <Card className={`glassmorphism border-secondary/30 ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
+          <Card className={`bg-black/80 border-green-500/30 backdrop-blur-sm ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
             <CardHeader className="text-center">
               <div className="flex justify-center mb-3">
-                <Lock className="w-6 h-6 text-secondary" />
+                <Lock className="w-6 h-6 text-green-500" />
               </div>
-              <CardTitle className="text-secondary text-xl">Enter to Continue</CardTitle>
-              <CardDescription className="text-secondary/70">
-                This empire is password-protected
+              <CardTitle className="text-green-500 text-xl font-mono">{'>'} ACCESS_REQUIRED</CardTitle>
+              <CardDescription className="text-green-400/70 font-mono">
+                $ enter credentials to proceed
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handlePasswordSubmit} className="space-y-4">
                 <Input
                   type="password"
-                  placeholder="Enter password"
+                  placeholder="********"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-white/10 border-secondary/30 text-secondary placeholder:text-secondary/50 focus:border-secondary focus:ring-secondary/20"
+                  className="bg-black/50 border-green-500/50 text-green-400 placeholder:text-green-500/30 focus:border-green-500 focus:ring-green-500/20 font-mono"
                 />
                 <Button 
                   type="submit" 
-                  className="w-full bg-secondary text-primary hover:bg-secondary/90 font-medium transition-all duration-300 hover:shadow-lg"
+                  className="w-full bg-green-500 text-black hover:bg-green-400 font-mono font-bold transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50"
                 >
-                  Unlock Empire
+                  {'>'} AUTHENTICATE
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </form>
@@ -139,7 +140,7 @@ const Index = () => {
               href="https://instagram.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full glassmorphism border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/20 transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 rounded-full bg-black/50 border border-green-500/30 flex items-center justify-center text-green-500 hover:bg-green-500/20 hover:border-green-500/60 transition-all duration-300 hover:scale-110"
             >
               <Instagram className="w-5 h-5" />
             </a>
@@ -147,7 +148,7 @@ const Index = () => {
               href="https://linkedin.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full glassmorphism border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/20 transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 rounded-full bg-black/50 border border-green-500/30 flex items-center justify-center text-green-500 hover:bg-green-500/20 hover:border-green-500/60 transition-all duration-300 hover:scale-110"
             >
               <Linkedin className="w-5 h-5" />
             </a>
@@ -155,26 +156,10 @@ const Index = () => {
               href="https://youtube.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full glassmorphism border-secondary/30 flex items-center justify-center text-secondary hover:bg-secondary/20 transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 rounded-full bg-black/50 border border-green-500/30 flex items-center justify-center text-green-500 hover:bg-green-500/20 hover:border-green-500/60 transition-all duration-300 hover:scale-110"
             >
               <Youtube className="w-5 h-5" />
             </a>
-          </div>
-
-          {/* Brand Names */}
-          <div className="text-center mt-8 animate-fade-in-delay">
-            <p className="text-secondary/40 text-xs font-body mb-2">Our Brands</p>
-            <div className="flex flex-wrap justify-center gap-3 text-secondary/50 text-xs font-body">
-              <span>Harshadsatasiya.com</span>
-              <span className="text-secondary/30">•</span>
-              <span>RaghusEnterprise.com</span>
-              <span className="text-secondary/30">•</span>
-              <span>JewelFoxStore.com</span>
-              <span className="text-secondary/30">•</span>
-              <span>Pattrnly.com</span>
-              <span className="text-secondary/30">•</span>
-              <span>Woodeen.com</span>
-            </div>
           </div>
         </div>
 

@@ -3,7 +3,13 @@ import { useParams, Link } from "react-router-dom";
 import { Crown, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/hooks/use-toast";
+
+const errorMessages: Record<string, string[]> = {
+  pattrnly: ["Employee ID not found", "Invalid credentials"],
+  woodeen: ["Incorrect password", "Access denied"],
+  jewelfox: ["Incorrect password", "Invalid credentials"],
+  developer: ["Developer ID not recognized", "Access denied"],
+};
 
 const companyConfig: Record<string, {
   name: string;
@@ -12,38 +18,43 @@ const companyConfig: Record<string, {
   inputPlaceholder: string;
   bgColor: string;
   accentColor: string;
+  accentRing: string;
 }> = {
   pattrnly: {
     name: "Pattrnly",
     gradient: "from-red-600 to-red-800",
     inputLabel: "Employee ID",
     inputPlaceholder: "Enter your Employee ID",
-    bgColor: "hsl(0, 30%, 8%)",
+    bgColor: "hsl(0, 30%, 6%)",
     accentColor: "hsl(0, 72%, 51%)",
+    accentRing: "hsl(0, 72%, 51%)",
   },
   woodeen: {
     name: "Woodeen",
-    gradient: "from-amber-700 to-amber-900",
+    gradient: "from-[hsl(14,82%,22%)] to-[hsl(14,82%,14%)]",
     inputLabel: "Password",
     inputPlaceholder: "Enter your Password",
-    bgColor: "hsl(30, 30%, 8%)",
-    accentColor: "hsl(30, 80%, 45%)",
+    bgColor: "hsl(14, 40%, 6%)",
+    accentColor: "hsl(14, 82%, 28%)",
+    accentRing: "hsl(25, 80%, 50%)",
   },
   jewelfox: {
     name: "JewelFox",
-    gradient: "from-slate-400 to-slate-600",
+    gradient: "from-[hsl(240,7%,25%)] to-[hsl(240,7%,13%)]",
     inputLabel: "Password",
     inputPlaceholder: "Enter your Password",
-    bgColor: "hsl(215, 20%, 10%)",
-    accentColor: "hsl(215, 15%, 60%)",
+    bgColor: "hsl(240, 7%, 7%)",
+    accentColor: "hsl(240, 5%, 30%)",
+    accentRing: "hsl(240, 5%, 50%)",
   },
   developer: {
     name: "Developer Team",
     gradient: "from-blue-700 to-blue-950",
     inputLabel: "Developer ID",
     inputPlaceholder: "Enter your Developer ID",
-    bgColor: "hsl(220, 50%, 7%)",
-    accentColor: "hsl(220, 80%, 60%)",
+    bgColor: "hsl(220, 50%, 5%)",
+    accentColor: "hsl(220, 80%, 50%)",
+    accentRing: "hsl(220, 80%, 60%)",
   },
 };
 
@@ -51,13 +62,16 @@ const CompanyLogin = () => {
   const { company } = useParams<{ company: string }>();
   const config = companyConfig[company || ""] || companyConfig.pattrnly;
   const [value, setValue] = useState("");
+  const [error, setError] = useState("");
+  const [shake, setShake] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: `Welcome to ${config.name}`,
-      description: "This is a demo login. No validation applied.",
-    });
+    const msgs = errorMessages[company || "pattrnly"] || errorMessages.pattrnly;
+    const randomError = msgs[Math.floor(Math.random() * msgs.length)];
+    setError(randomError);
+    setShake(true);
+    setTimeout(() => setShake(false), 500);
   };
 
   return (
@@ -65,11 +79,11 @@ const CompanyLogin = () => {
       className="min-h-screen flex flex-col items-center justify-center px-4"
       style={{ backgroundColor: config.bgColor }}
     >
-      {/* Breadcrumb */}
+      {/* Back link */}
       <div className="absolute top-6 left-6">
         <Link
           to="/"
-          className="flex items-center gap-2 text-sm text-[hsl(215,15%,55%)] hover:text-white transition-colors"
+          className="flex items-center gap-2 text-sm text-[hsl(220,15%,45%)] hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Dashboard
@@ -85,22 +99,35 @@ const CompanyLogin = () => {
             <Crown className="w-7 h-7 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-white">{config.name}</h1>
-          <p className="text-[hsl(215,15%,50%)] text-sm mt-1">Sign in to continue</p>
+          <p className="text-[hsl(220,15%,40%)] text-sm mt-1">Sign in to continue</p>
         </div>
 
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-xs text-[hsl(215,15%,55%)] mb-1.5 block font-medium">
+            <label className="text-xs text-[hsl(220,15%,50%)] mb-1.5 block font-medium">
               {config.inputLabel}
             </label>
             <Input
               type={config.inputLabel === "Password" ? "password" : "text"}
               placeholder={config.inputPlaceholder}
               value={value}
-              onChange={(e) => setValue(e.target.value)}
-              className="bg-[hsl(215,30%,12%)] border-[hsl(215,25%,20%)] text-white placeholder:text-[hsl(215,15%,35%)] h-11"
+              onChange={(e) => {
+                setValue(e.target.value);
+                if (error) setError("");
+              }}
+              className={`bg-[hsl(220,30%,10%)] text-white placeholder:text-[hsl(220,15%,30%)] h-11 transition-all duration-300 ${
+                shake ? 'animate-[shake_0.4s_ease-in-out]' : ''
+              } ${
+                error
+                  ? 'border-red-500/70 focus-visible:ring-red-500/50'
+                  : 'border-[hsl(220,25%,18%)]'
+              }`}
+              style={!error ? { ['--tw-ring-color' as string]: config.accentRing } : undefined}
             />
+            {error && (
+              <p className="text-red-400 text-xs mt-2 animate-fade-in">{error}</p>
+            )}
           </div>
           <Button
             type="submit"
@@ -109,6 +136,10 @@ const CompanyLogin = () => {
             Continue
           </Button>
         </form>
+
+        <p className="text-center text-[hsl(220,15%,25%)] text-xs mt-8 tracking-widest uppercase">
+          Where Ideas Become Empire
+        </p>
       </div>
     </div>
   );

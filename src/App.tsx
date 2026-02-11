@@ -9,8 +9,8 @@ import About from "./pages/About";
 import Empire from "./pages/Empire";
 import Vision from "./pages/Vision";
 import Contact from "./pages/Contact";
+import CompanyLogin from "./pages/CompanyLogin";
 import NotFound from "./pages/NotFound";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -26,6 +26,7 @@ const App = () => (
           <Route path="/empire" element={<Empire />} />
           <Route path="/vision" element={<Vision />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login/:company" element={<CompanyLogin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

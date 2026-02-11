@@ -11,11 +11,10 @@ interface SubCard {
 interface CompanyCard {
   name: string;
   description: string;
-  bgColor: string;
-  glowColor: string;
-  borderColor: string;
-  textColor: string;
   accentColor: string;
+  accentBorder: string;
+  accentText: string;
+  accentBg: string;
   loginPath: string;
   mainIcon: React.ReactNode;
   subCards: SubCard[];
@@ -25,11 +24,10 @@ const companies: CompanyCard[] = [
   {
     name: "Pattrnly",
     description: "Product & Engineering Tools",
-    bgColor: "hsl(0, 72%, 12%)",
-    glowColor: "rgba(220,38,38,0.25)",
-    borderColor: "hsl(0, 60%, 25%)",
-    textColor: "hsl(0, 80%, 65%)",
     accentColor: "hsl(0, 72%, 51%)",
+    accentBorder: "hsl(0, 60%, 85%)",
+    accentText: "hsl(0, 65%, 45%)",
+    accentBg: "hsl(0, 70%, 97%)",
     loginPath: "/login/pattrnly",
     mainIcon: <FolderOpen className="w-5 h-5" />,
     subCards: [
@@ -44,11 +42,10 @@ const companies: CompanyCard[] = [
   {
     name: "Woodeen",
     description: "E-commerce & Product Operations",
-    bgColor: "hsl(14, 82%, 14%)",
-    glowColor: "rgba(132,36,12,0.3)",
-    borderColor: "hsl(14, 70%, 25%)",
-    textColor: "hsl(25, 80%, 60%)",
     accentColor: "hsl(14, 82%, 28%)",
+    accentBorder: "hsl(14, 50%, 88%)",
+    accentText: "hsl(14, 70%, 32%)",
+    accentBg: "hsl(14, 50%, 97%)",
     loginPath: "/login/woodeen",
     mainIcon: <FolderOpen className="w-5 h-5" />,
     subCards: [
@@ -62,11 +59,10 @@ const companies: CompanyCard[] = [
   {
     name: "JewelFox",
     description: "Jewelry Product & Pricing Tools",
-    bgColor: "hsl(240, 7%, 13%)",
-    glowColor: "rgba(32,32,37,0.4)",
-    borderColor: "hsl(240, 5%, 22%)",
-    textColor: "hsl(240, 5%, 65%)",
-    accentColor: "hsl(240, 7%, 35%)",
+    accentColor: "hsl(240, 7%, 14%)",
+    accentBorder: "hsl(240, 5%, 88%)",
+    accentText: "hsl(240, 7%, 25%)",
+    accentBg: "hsl(240, 5%, 97%)",
     loginPath: "/login/jewelfox",
     mainIcon: <Lock className="w-5 h-5" />,
     subCards: [
@@ -79,11 +75,10 @@ const companies: CompanyCard[] = [
   {
     name: "Developer Team",
     description: "Internal Developer & Team Access",
-    bgColor: "hsl(220, 50%, 10%)",
-    glowColor: "rgba(59,130,246,0.2)",
-    borderColor: "hsl(220, 45%, 22%)",
-    textColor: "hsl(220, 80%, 65%)",
     accentColor: "hsl(220, 80%, 50%)",
+    accentBorder: "hsl(220, 60%, 90%)",
+    accentText: "hsl(220, 70%, 40%)",
+    accentBg: "hsl(220, 60%, 97%)",
     loginPath: "/login/developer",
     mainIcon: <Lock className="w-5 h-5" />,
     subCards: [
@@ -99,169 +94,136 @@ const companies: CompanyCard[] = [
 const Index = () => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
-  const toggleCard = (name: string) => {
-    setExpandedCard(expandedCard === name ? null : name);
-  };
-
   return (
-    <div className="min-h-screen bg-[hsl(220,55%,5%)] text-white">
-      {/* Ambient background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[hsl(220,80%,40%)] opacity-[0.03] blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[hsl(220,80%,50%)] opacity-[0.02] blur-[120px] rounded-full" />
-      </div>
-
+    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F8FAFF 0%, #F4F7FF 50%, #EEF2FF 100%)' }}>
       {/* Header */}
-      <header className="relative z-10 pt-12 pb-10 text-center">
+      <header className="pt-14 pb-10 text-center">
         <div className="flex items-center justify-center gap-3 mb-2">
-          <Crown className="w-9 h-9 text-[hsl(43,96%,56%)]" />
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Raghu's Empire</h1>
+          <Crown className="w-8 h-8" style={{ color: 'hsl(215, 50%, 30%)' }} />
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: 'hsl(215, 50%, 12%)' }}>
+            Raghu's Empire
+          </h1>
         </div>
-        <p className="text-[hsl(220,20%,45%)] text-sm tracking-wide">Internal Dashboard</p>
+        <p className="text-sm tracking-wide" style={{ color: 'hsl(215, 20%, 55%)' }}>
+          Internal Dashboard
+        </p>
       </header>
 
-      {/* Company Cards Grid */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7">
+      {/* Company Cards */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {companies.map((company) => {
             const isExpanded = expandedCard === company.name;
             return (
               <div
                 key={company.name}
-                className="rounded-2xl overflow-hidden transition-all duration-500 ease-out group"
+                className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
                 style={{
-                  backgroundColor: company.bgColor,
-                  border: `1px solid ${company.borderColor}`,
-                  boxShadow: isExpanded ? `0 0 40px ${company.glowColor}` : `0 0 0px transparent`,
+                  border: '1px solid hsl(215, 20%, 90%)',
+                  boxShadow: '0 1px 3px hsla(215, 30%, 50%, 0.06), 0 4px 12px hsla(215, 30%, 50%, 0.04)',
+                  borderTop: `3px solid ${company.accentColor}`,
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 40px ${company.glowColor}`;
-                  (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 30px hsla(215, 30%, 50%, 0.1), 0 0 0 1px ${company.accentBorder}`;
                 }}
                 onMouseLeave={(e) => {
-                  if (!isExpanded) {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 0px transparent';
-                  } else {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 40px ${company.glowColor}`;
-                  }
-                  (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 3px hsla(215, 30%, 50%, 0.06), 0 4px 12px hsla(215, 30%, 50%, 0.04)';
                 }}
               >
                 {/* Card Header */}
                 <button
-                  onClick={() => toggleCard(company.name)}
-                  className="w-full px-5 py-5 flex items-center justify-between text-left transition-colors"
-                  style={{ borderBottom: `1px solid ${company.borderColor}` }}
+                  onClick={() => setExpandedCard(isExpanded ? null : company.name)}
+                  className="w-full px-5 py-5 flex items-center justify-between text-left xl:hidden"
                 >
                   <div className="flex items-center gap-3">
-                    <span style={{ color: company.textColor }}>{company.mainIcon}</span>
+                    <span style={{ color: company.accentText }}>{company.mainIcon}</span>
                     <div>
-                      <h2 className="text-lg font-bold text-white">{company.name}</h2>
-                      <p className="text-xs mt-0.5" style={{ color: company.textColor }}>{company.description}</p>
+                      <h2 className="text-base font-semibold" style={{ color: 'hsl(215, 50%, 12%)' }}>{company.name}</h2>
+                      <p className="text-xs mt-0.5" style={{ color: 'hsl(215, 15%, 55%)' }}>{company.description}</p>
                     </div>
                   </div>
                   <ChevronDown
                     className="w-4 h-4 transition-transform duration-300"
                     style={{
-                      color: company.textColor,
+                      color: 'hsl(215, 15%, 60%)',
                       transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
                     }}
                   />
                 </button>
 
-                {/* Sub Cards - collapsible */}
-                <div
-                  className="overflow-hidden transition-all duration-500 ease-in-out"
-                  style={{
-                    maxHeight: isExpanded ? `${company.subCards.length * 56}px` : '0px',
-                    opacity: isExpanded ? 1 : 0,
-                  }}
-                >
-                  <div className="p-3 space-y-1.5">
-                    {company.subCards.map((sub, i) => (
-                      <Link
-                        key={i}
-                        to={company.loginPath}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group/sub"
-                        style={{
-                          backgroundColor: 'hsla(220, 30%, 15%, 0.5)',
-                          border: '1px solid hsla(220, 20%, 20%, 0.5)',
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLAnchorElement).style.backgroundColor = `${company.accentColor}22`;
-                          (e.currentTarget as HTMLAnchorElement).style.borderColor = company.borderColor;
-                        }}
-                        onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'hsla(220, 30%, 15%, 0.5)';
-                          (e.currentTarget as HTMLAnchorElement).style.borderColor = 'hsla(220, 20%, 20%, 0.5)';
-                        }}
-                        title={sub.action}
-                      >
-                        <span style={{ color: company.textColor }} className="shrink-0 opacity-70 group-hover/sub:opacity-100 transition-opacity">
-                          {sub.icon}
-                        </span>
-                        <span className="text-xs text-[hsl(220,15%,65%)] group-hover/sub:text-white transition-colors truncate flex-1">
-                          {sub.title}
-                        </span>
-                        <ExternalLink
-                          className="w-3.5 h-3.5 shrink-0 opacity-40 group-hover/sub:opacity-100 group-hover/sub:translate-x-0.5 group-hover/sub:-translate-y-0.5 transition-all duration-200"
-                          style={{ color: company.textColor }}
-                        />
-                      </Link>
-                    ))}
+                {/* Desktop header (no toggle) */}
+                <div className="hidden xl:flex px-5 py-5 items-center gap-3">
+                  <span style={{ color: company.accentText }}>{company.mainIcon}</span>
+                  <div>
+                    <h2 className="text-base font-semibold" style={{ color: 'hsl(215, 50%, 12%)' }}>{company.name}</h2>
+                    <p className="text-xs mt-0.5" style={{ color: 'hsl(215, 15%, 55%)' }}>{company.description}</p>
                   </div>
                 </div>
 
-                {/* Always-visible sub-cards on desktop when not using expand */}
+                {/* Sub Cards - mobile collapsible */}
+                <div
+                  className="xl:hidden overflow-hidden transition-all duration-400 ease-in-out"
+                  style={{
+                    maxHeight: isExpanded ? `${company.subCards.length * 52 + 24}px` : '0px',
+                    opacity: isExpanded ? 1 : 0,
+                  }}
+                >
+                  <SubCardList company={company} />
+                </div>
+
+                {/* Sub Cards - desktop always visible */}
                 <div className="hidden xl:block">
-                  {!isExpanded && (
-                    <div className="p-3 space-y-1.5">
-                      {company.subCards.map((sub, i) => (
-                        <Link
-                          key={i}
-                          to={company.loginPath}
-                          className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group/sub"
-                          style={{
-                            backgroundColor: 'hsla(220, 30%, 15%, 0.5)',
-                            border: '1px solid hsla(220, 20%, 20%, 0.5)',
-                          }}
-                          onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = `${company.accentColor}22`;
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = company.borderColor;
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'hsla(220, 30%, 15%, 0.5)';
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'hsla(220, 20%, 20%, 0.5)';
-                          }}
-                          title={sub.action}
-                        >
-                          <span style={{ color: company.textColor }} className="shrink-0 opacity-70 group-hover/sub:opacity-100 transition-opacity">
-                            {sub.icon}
-                          </span>
-                          <span className="text-xs text-[hsl(220,15%,65%)] group-hover/sub:text-white transition-colors truncate flex-1">
-                            {sub.title}
-                          </span>
-                          <ExternalLink
-                            className="w-3.5 h-3.5 shrink-0 opacity-40 group-hover/sub:opacity-100 group-hover/sub:translate-x-0.5 group-hover/sub:-translate-y-0.5 transition-all duration-200"
-                            style={{ color: company.textColor }}
-                          />
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <SubCardList company={company} />
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Footer tagline */}
-        <p className="text-center text-[hsl(220,15%,30%)] text-xs mt-16 tracking-widest uppercase">
+        <p className="text-center text-xs mt-16 tracking-widest uppercase" style={{ color: 'hsl(215, 15%, 70%)' }}>
           Where Ideas Become Empire
         </p>
       </main>
     </div>
   );
 };
+
+const SubCardList = ({ company }: { company: CompanyCard }) => (
+  <div className="px-4 pb-4 space-y-1">
+    {company.subCards.map((sub, i) => (
+      <Link
+        key={i}
+        to={company.loginPath}
+        className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group/sub"
+        style={{
+          backgroundColor: 'hsl(215, 30%, 98%)',
+          border: '1px solid hsl(215, 20%, 93%)',
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLAnchorElement).style.backgroundColor = company.accentBg;
+          (e.currentTarget as HTMLAnchorElement).style.borderColor = company.accentBorder;
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 2px 8px hsla(215,30%,50%,0.06)';
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'hsl(215, 30%, 98%)';
+          (e.currentTarget as HTMLAnchorElement).style.borderColor = 'hsl(215, 20%, 93%)';
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none';
+        }}
+        title={sub.action}
+      >
+        <span style={{ color: company.accentText }} className="shrink-0 opacity-60 group-hover/sub:opacity-100 transition-opacity">
+          {sub.icon}
+        </span>
+        <span className="text-xs truncate flex-1 transition-colors" style={{ color: 'hsl(215, 15%, 40%)' }}>
+          {sub.title}
+        </span>
+        <ExternalLink
+          className="w-3.5 h-3.5 shrink-0 opacity-30 group-hover/sub:opacity-70 group-hover/sub:translate-x-0.5 group-hover/sub:-translate-y-0.5 transition-all duration-200"
+          style={{ color: company.accentText }}
+        />
+      </Link>
+    ))}
+  </div>
+);
 
 export default Index;

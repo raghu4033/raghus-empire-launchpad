@@ -1,104 +1,146 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Crown, Lock, Sparkles, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { toast } from "@/hooks/use-toast";
+import { Crown, ExternalLink, Lock, FolderOpen } from "lucide-react";
+import { Link } from "react-router-dom";
+
+interface SubCard {
+  title: string;
+  action: string;
+  link?: string;
+}
+
+interface CompanyCard {
+  name: string;
+  description: string;
+  gradient: string;
+  hoverGlow: string;
+  borderColor: string;
+  textColor: string;
+  loginPath: string;
+  icon: React.ReactNode;
+  subCards: SubCard[];
+}
+
+const companies: CompanyCard[] = [
+  {
+    name: "Pattrnly",
+    description: "Product & Engineering Tools",
+    gradient: "from-red-600 to-red-800",
+    hoverGlow: "hover:shadow-[0_0_30px_rgba(220,38,38,0.3)]",
+    borderColor: "border-red-500/30",
+    textColor: "text-red-400",
+    loginPath: "/login/pattrnly",
+    icon: <FolderOpen className="w-5 h-5" />,
+    subCards: [
+      { title: "Pattrnly Bug Tracker (2026)", action: "Open Pattrnly Bug Tracker (2026)" },
+      { title: "Task Tracker (Jira Integrated)", action: "Join Jira Tasks" },
+      { title: "UI Reference · Admin & Contributor", action: "Open Admin & Contributor UI" },
+      { title: "UI Reference · User / Marketplace", action: "Open User / Marketplace UI" },
+      { title: "GitHub · Admin & Contributor UI", action: "Open GitHub Repository" },
+      { title: "GitHub · User / Marketplace UI", action: "Open GitHub Repository" },
+    ],
+  },
+  {
+    name: "Woodeen",
+    description: "E-commerce & Product Operations",
+    gradient: "from-amber-700 to-amber-900",
+    hoverGlow: "hover:shadow-[0_0_30px_rgba(180,83,9,0.3)]",
+    borderColor: "border-amber-600/30",
+    textColor: "text-amber-400",
+    loginPath: "/login/woodeen",
+    icon: <FolderOpen className="w-5 h-5" />,
+    subCards: [
+      { title: "Shopify Admin Login", action: "Open Shopify Admin" },
+      { title: "Product Resources", action: "Open Product Resources" },
+      { title: "Inventory & Variants Manager", action: "Open Inventory Manager" },
+      { title: "Order & Fulfillment Dashboard", action: "Open Dashboard" },
+      { title: "Marketing Assets Library", action: "Open Assets Library" },
+    ],
+  },
+  {
+    name: "JewelFox",
+    description: "Jewelry Product & Pricing Tools",
+    gradient: "from-slate-400 to-slate-600",
+    hoverGlow: "hover:shadow-[0_0_30px_rgba(148,163,184,0.3)]",
+    borderColor: "border-slate-400/30",
+    textColor: "text-slate-300",
+    loginPath: "/login/jewelfox",
+    icon: <FolderOpen className="w-5 h-5" />,
+    subCards: [
+      { title: "Product Creator (SKU & Name Manager)", action: "Open Product Creator" },
+      { title: "Pricing & Market Research Tool", action: "Open Pricing Tool" },
+      { title: "Mockup Creator", action: "Open Mockup Creator" },
+      { title: "Catalog Export Tool", action: "Open Catalog Export" },
+    ],
+  },
+  {
+    name: "Developer Team",
+    description: "Internal Developer & Team Access",
+    gradient: "from-blue-700 to-blue-950",
+    hoverGlow: "hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]",
+    borderColor: "border-blue-500/30",
+    textColor: "text-blue-400",
+    loginPath: "/login/developer",
+    icon: <Lock className="w-5 h-5" />,
+    subCards: [
+      { title: "Slack Workspace Access", action: "Open Slack" },
+      { title: "Jira Board", action: "Open Jira Board" },
+      { title: "Paystubs & Salary Portal", action: "Open Salary Portal" },
+      { title: "Internal Docs / Wiki", action: "Open Wiki" },
+      { title: "Deployment & Logs Dashboard", action: "Open Logs Dashboard" },
+    ],
+  },
+];
 
 const Index = () => {
-  const [password, setPassword] = useState("");
-  const [isShaking, setIsShaking] = useState(false);
-  const navigate = useNavigate();
-
-  const handlePasswordSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password === "Raghu@2025") {
-      toast({
-        title: "Welcome to Raghu's Empire! 👑",
-        description: "Where Ideas Become Empire",
-      });
-      navigate("/home");
-    } else {
-      setIsShaking(true);
-      toast({
-        title: "Access Denied",
-        description: "Incorrect password. Please try again.",
-        variant: "destructive",
-      });
-      setTimeout(() => setIsShaking(false), 500);
-      setPassword("");
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Subtle background effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--secondary)/0.05)_0%,transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--secondary)/0.03)_0%,transparent_50%)]" />
-
-      <div className="relative z-10 w-full max-w-md">
-        {/* Logo & Crown */}
-        <div className="flex flex-col items-center mb-8 animate-fade-in">
-          <Crown className="w-12 h-12 text-secondary mb-4" />
-          <div className="w-20 h-20 rounded-full bg-secondary flex items-center justify-center shadow-lg mb-6">
-            <span className="text-4xl font-heading font-bold text-secondary-foreground">R</span>
-          </div>
+    <div className="min-h-screen bg-[hsl(215,50%,6%)] text-white">
+      {/* Header */}
+      <header className="pt-10 pb-8 text-center">
+        <div className="flex items-center justify-center gap-3 mb-3">
+          <Crown className="w-8 h-8 text-[hsl(43,96%,56%)]" />
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Raghu's Empire</h1>
         </div>
+        <p className="text-[hsl(215,20%,55%)] text-sm">Where Ideas Become Empire</p>
+      </header>
 
-        {/* Title */}
-        <div className="text-center mb-10 animate-fade-in-delay">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 tracking-tight">
-            Raghu's Empire
-          </h1>
-          <p className="text-muted-foreground text-base font-body mb-4">
-            A creative powerhouse of startups and innovations by Raghu.
-          </p>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20">
-            <Sparkles className="w-4 h-4 text-secondary" />
-            <span className="text-secondary font-medium text-sm">Launching Soon</span>
-            <Sparkles className="w-4 h-4 text-secondary" />
-          </div>
-        </div>
+      {/* Company Cards Grid */}
+      <main className="max-w-7xl mx-auto px-4 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {companies.map((company) => (
+            <div
+              key={company.name}
+              className={`rounded-2xl border ${company.borderColor} bg-[hsl(215,45%,10%)] overflow-hidden transition-all duration-300 ${company.hoverGlow} hover:scale-[1.02] group`}
+            >
+              {/* Card Header */}
+              <div className={`bg-gradient-to-br ${company.gradient} px-5 py-5`}>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-lg font-bold text-white">{company.name}</h2>
+                    <p className="text-white/70 text-xs mt-1">{company.description}</p>
+                  </div>
+                  <span className="text-white/50">{company.icon}</span>
+                </div>
+              </div>
 
-        {/* Password Form */}
-        <Card className={`bg-card border-border shadow-xl ${isShaking ? "animate-[shake_0.5s_ease-in-out]" : ""}`}>
-          <CardHeader className="text-center pb-4">
-            <div className="flex justify-center">
-              <Lock className="w-5 h-5 text-muted-foreground" />
+              {/* Sub Cards */}
+              <div className="p-4 space-y-2">
+                {company.subCards.map((sub, i) => (
+                  <Link
+                    key={i}
+                    to={company.loginPath}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-lg bg-[hsl(215,40%,13%)] hover:bg-[hsl(215,40%,16%)] border border-[hsl(215,30%,18%)] transition-all duration-200 group/sub"
+                    title={sub.action}
+                  >
+                    <span className="text-xs text-[hsl(215,15%,70%)] group-hover/sub:text-white transition-colors truncate pr-2">
+                      {sub.title}
+                    </span>
+                    <ExternalLink className={`w-3.5 h-3.5 ${company.textColor} shrink-0 opacity-50 group-hover/sub:opacity-100 transition-opacity`} />
+                  </Link>
+                ))}
+              </div>
             </div>
-          </CardHeader>
-          <CardContent className="pb-6">
-            <form onSubmit={handlePasswordSubmit} className="space-y-4">
-              <Input
-                type="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="bg-background border-border h-11"
-              />
-              <Button 
-                type="submit" 
-                className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 h-11"
-              >
-                Continue
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </form>
-            <p className="text-center text-muted-foreground text-xs mt-4 font-body">
-              Where Ideas Become Empire
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-
-      <style>{`
-        @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          25% { transform: translateX(-10px); }
-          75% { transform: translateX(10px); }
-        }
-      `}</style>
+          ))}
+        </div>
+      </main>
     </div>
   );
 };

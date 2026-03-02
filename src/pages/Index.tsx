@@ -1,236 +1,254 @@
-import { Link } from "react-router-dom";
-import {
-  DollarSign,
-  ShoppingCart,
-  FolderKanban,
-  Users,
-  Server,
-  ArrowUpRight,
-  Bug,
-  ListChecks,
-  Layout,
-  Github,
-  Tag,
-  Wrench,
-  FileText,
-  Layers,
-  MessageSquare,
-  BookOpen,
-  Rocket,
-  Gem,
-  Code2,
-} from "lucide-react";
-import StatCard from "@/components/StatCard";
-import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowUpRight, Crown, Globe, Lightbulb, Rocket, Layers, ShoppingCart, Gem, Code2, Mail } from "lucide-react";
+import Navbar from "@/components/Navbar";
 
-const revenueData = [
-  { month: "Jan", revenue: 4200, orders: 120 },
-  { month: "Feb", revenue: 5100, orders: 145 },
-  { month: "Mar", revenue: 4800, orders: 132 },
-  { month: "Apr", revenue: 6200, orders: 178 },
-  { month: "May", revenue: 7100, orders: 201 },
-  { month: "Jun", revenue: 6800, orders: 189 },
-  { month: "Jul", revenue: 8200, orders: 234 },
-];
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.12, duration: 0.7, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] },
+  }),
+};
 
-const businesses = [
+const companies = [
   {
     name: "Pattrnly",
-    description: "Product & Engineering Tools",
-    icon: FolderKanban,
-    color: "hsl(0, 72%, 51%)",
-    bgClass: "bg-red-500/10",
-    textClass: "text-red-400",
-    path: "/pattrnly",
-    tools: [
-      { title: "Bug Tracker", icon: Bug },
-      { title: "Task Tracker (Jira)", icon: ListChecks },
-      { title: "Admin UI", icon: Layout },
-      { title: "Marketplace UI", icon: ShoppingCart },
-      { title: "GitHub Repos", icon: Github },
-    ],
-    status: "5 active issues",
-    statusType: "warn" as const,
+    tagline: "Product & Engineering Intelligence",
+    description: "A powerful suite of tools for product development, bug tracking, task management, and UI reference systems built for modern engineering teams.",
+    icon: Layers,
+    gradient: "from-red-500/20 to-red-900/10",
+    borderHover: "hover:border-red-500/30",
+    iconColor: "text-red-400",
   },
   {
     name: "Woodeen",
-    description: "E-commerce & Product Ops",
+    tagline: "Handcrafted E-commerce",
+    description: "End-to-end e-commerce operations powering inventory management, order fulfillment, product resources, and marketing for artisanal wood products.",
     icon: ShoppingCart,
-    color: "hsl(14, 82%, 28%)",
-    bgClass: "bg-orange-500/10",
-    textClass: "text-orange-400",
-    path: "/woodeen",
-    tools: [
-      { title: "Shopify Admin", icon: ShoppingCart },
-      { title: "Product Resources", icon: Tag },
-      { title: "Inventory", icon: Wrench },
-      { title: "Orders", icon: FileText },
-      { title: "Marketing", icon: Layers },
-    ],
-    status: "23 pending orders",
-    statusType: "info" as const,
+    gradient: "from-orange-500/20 to-orange-900/10",
+    borderHover: "hover:border-orange-500/30",
+    iconColor: "text-orange-400",
   },
   {
     name: "JewelFox",
-    description: "Jewelry Product & Pricing",
+    tagline: "Luxury Jewelry Innovation",
+    description: "Precision tools for jewelry product creation, market pricing research, high-fidelity mockup generation, and catalog management at scale.",
     icon: Gem,
-    color: "hsl(240, 7%, 14%)",
-    bgClass: "bg-violet-500/10",
-    textClass: "text-violet-400",
-    path: "/jewelfox",
-    tools: [
-      { title: "Product Creator", icon: Tag },
-      { title: "Pricing Tool", icon: DollarSign },
-      { title: "Mockup Creator", icon: Layers },
-      { title: "Catalog Export", icon: FileText },
-    ],
-    status: "All systems go",
-    statusType: "ok" as const,
+    gradient: "from-violet-500/20 to-violet-900/10",
+    borderHover: "hover:border-violet-500/30",
+    iconColor: "text-violet-400",
   },
   {
     name: "Developer Team",
-    description: "Internal Dev & Team Access",
+    tagline: "Engineering Excellence",
+    description: "Our core engineering division driving innovation across all ventures — from deployment pipelines to internal knowledge systems and team operations.",
     icon: Code2,
-    color: "hsl(220, 80%, 50%)",
-    bgClass: "bg-blue-500/10",
-    textClass: "text-blue-400",
-    path: "/developer",
-    tools: [
-      { title: "Slack", icon: MessageSquare },
-      { title: "Jira Board", icon: ListChecks },
-      { title: "Paystubs", icon: FileText },
-      { title: "Wiki", icon: BookOpen },
-      { title: "Deployments", icon: Rocket },
-    ],
-    status: "Sprint active",
-    statusType: "ok" as const,
+    gradient: "from-blue-500/20 to-blue-900/10",
+    borderHover: "hover:border-blue-500/30",
+    iconColor: "text-blue-400",
   },
 ];
 
-const statusColors = {
-  ok: "bg-emerald-500/10 text-emerald-400",
-  warn: "bg-amber-500/10 text-amber-400",
-  info: "bg-blue-500/10 text-blue-400",
-};
+const pillars = [
+  { icon: Rocket, title: "Innovation First", description: "We build products that push boundaries and redefine industries." },
+  { icon: Globe, title: "Global Vision", description: "Operating across verticals with ambitions that span continents." },
+  { icon: Lightbulb, title: "Relentless Focus", description: "Every venture is built with precision, purpose, and obsessive attention to craft." },
+];
 
 const Index = () => {
   return (
-    <div className="space-y-6 pb-20 lg:pb-0">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-sm text-muted-foreground mt-1">Overview of your empire</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navbar />
 
-      {/* Stats Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
-        <StatCard title="Total Revenue" value={82400} prefix="$" icon={DollarSign} trend="+12%" trendUp delay={0} />
-        <StatCard title="Orders" value={1089} icon={ShoppingCart} trend="+8%" trendUp delay={100} />
-        <StatCard title="Active Projects" value={14} icon={FolderKanban} delay={200} />
-        <StatCard title="Team Members" value={8} icon={Users} delay={300} />
-        <StatCard title="Server Uptime" value={99} suffix="%" icon={Server} trend="Healthy" trendUp delay={400} />
-      </div>
-
-      {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="glass-card p-5">
-          <h3 className="text-sm font-semibold text-foreground mb-4">Revenue Trend</h3>
-          <ResponsiveContainer width="100%" height={220}>
-            <LineChart data={revenueData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(224, 15%, 16%)" />
-              <XAxis dataKey="month" tick={{ fill: "hsl(220, 10%, 50%)", fontSize: 11 }} axisLine={false} />
-              <YAxis tick={{ fill: "hsl(220, 10%, 50%)", fontSize: 11 }} axisLine={false} />
-              <Tooltip
-                contentStyle={{
-                  background: "hsl(224, 25%, 10%)",
-                  border: "1px solid hsl(224, 15%, 16%)",
-                  borderRadius: "8px",
-                  fontSize: "12px",
-                }}
-              />
-              <Line type="monotone" dataKey="revenue" stroke="hsl(220, 70%, 55%)" strokeWidth={2} dot={false} />
-            </LineChart>
-          </ResponsiveContainer>
+      {/* ═══════ HERO ═══════ */}
+      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Subtle radial glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-white/[0.03] to-transparent blur-3xl" />
         </div>
 
-        <div className="glass-card p-5">
-          <h3 className="text-sm font-semibold text-foreground mb-4">Orders by Month</h3>
-          <ResponsiveContainer width="100%" height={220}>
-            <BarChart data={revenueData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(224, 15%, 16%)" />
-              <XAxis dataKey="month" tick={{ fill: "hsl(220, 10%, 50%)", fontSize: 11 }} axisLine={false} />
-              <YAxis tick={{ fill: "hsl(220, 10%, 50%)", fontSize: 11 }} axisLine={false} />
-              <Tooltip
-                contentStyle={{
-                  background: "hsl(224, 25%, 10%)",
-                  border: "1px solid hsl(224, 15%, 16%)",
-                  borderRadius: "8px",
-                  fontSize: "12px",
-                }}
-              />
-              <Bar dataKey="orders" fill="hsl(220, 70%, 55%)" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-20">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            custom={0}
+            className="inline-flex items-center gap-2 border border-border/40 rounded-full px-4 py-1.5 mb-8"
+          >
+            <Crown className="w-3.5 h-3.5 text-muted-foreground" />
+            <span className="text-xs text-muted-foreground tracking-wide">Global Innovation Group</span>
+          </motion.div>
 
-      {/* Quick Access - Business Cards */}
-      <div>
-        <h2 className="text-lg font-semibold text-foreground mb-4">Quick Access</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {businesses.map((biz, idx) => (
-            <Link
-              key={biz.name}
-              to={biz.path}
-              className="glass-card p-5 group hover:glow-blue transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${idx * 100}ms` }}
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            custom={1}
+            className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-foreground"
+          >
+            Where Ideas
+            <br />
+            <span className="text-gradient">Become Empire</span>
+          </motion.h1>
+
+          <motion.p
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            custom={2}
+            className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed"
+          >
+            We build, scale, and operate ventures across technology, e-commerce, and luxury — turning bold ideas into market-defining companies.
+          </motion.p>
+
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            custom={3}
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="#companies"
+              className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-xl ${biz.bgClass} flex items-center justify-center`}>
-                    <biz.icon className={`w-5 h-5 ${biz.textClass}`} />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">{biz.name}</h3>
-                    <p className="text-xs text-muted-foreground">{biz.description}</p>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </div>
-
-              {/* Status badge */}
-              <div className="mb-3">
-                <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${statusColors[biz.statusType]}`}>
-                  {biz.status}
-                </span>
-              </div>
-
-              {/* Tools preview */}
-              <div className="flex flex-wrap gap-1.5">
-                {biz.tools.map((tool) => (
-                  <span
-                    key={tool.title}
-                    className="inline-flex items-center gap-1 text-[10px] text-muted-foreground bg-accent/30 px-2 py-1 rounded-md"
-                  >
-                    <tool.icon className="w-3 h-3" />
-                    {tool.title}
-                  </span>
-                ))}
-              </div>
-            </Link>
-          ))}
+              Explore Companies
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 border border-border/50 px-6 py-3 rounded-full text-sm font-medium text-muted-foreground hover:text-foreground hover:border-border transition-all"
+            >
+              Contact Us
+            </a>
+          </motion.div>
         </div>
-      </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      </section>
+
+      {/* ═══════ COMPANIES ═══════ */}
+      <section id="companies" className="py-32 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+            custom={0}
+            className="text-center mb-16"
+          >
+            <p className="text-xs tracking-widest uppercase text-muted-foreground mb-3">Our Portfolio</p>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">The Empire</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {companies.map((company, i) => (
+              <motion.div
+                key={company.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeUp}
+                custom={i}
+                className={`glass-card p-8 group cursor-pointer transition-all duration-500 ${company.borderHover}`}
+              >
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${company.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                  <company.icon className={`w-6 h-6 ${company.iconColor}`} />
+                </div>
+
+                <h3 className="text-2xl font-bold text-foreground mb-1">{company.name}</h3>
+                <p className="text-sm text-muted-foreground font-medium mb-4">{company.tagline}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6">{company.description}</p>
+
+                <div className="flex items-center gap-1.5 text-sm font-medium text-foreground opacity-60 group-hover:opacity-100 transition-opacity">
+                  <span>Visit Website</span>
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ ABOUT ═══════ */}
+      <section id="about" className="py-32 px-6 border-t border-border/20">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+            custom={0}
+            className="text-center mb-16"
+          >
+            <p className="text-xs tracking-widest uppercase text-muted-foreground mb-3">About</p>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">Built Different</h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Raghu's Empire is a holding group founded on the principle that great companies are built by relentless execution, thoughtful design, and unwavering vision.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {pillars.map((pillar, i) => (
+              <motion.div
+                key={pillar.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeUp}
+                custom={i}
+                className="glass-card p-8 text-center"
+              >
+                <div className="w-12 h-12 rounded-xl bg-muted/50 flex items-center justify-center mx-auto mb-5">
+                  <pillar.icon className="w-5 h-5 text-foreground" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-2">{pillar.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{pillar.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ CONTACT ═══════ */}
+      <section id="contact" className="py-32 px-6 border-t border-border/20">
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+            custom={0}
+          >
+            <p className="text-xs tracking-widest uppercase text-muted-foreground mb-3">Get in Touch</p>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4">Let's Build Together</h2>
+            <p className="text-muted-foreground leading-relaxed mb-10">
+              Whether you're looking to collaborate, invest, or join our team — we'd love to hear from you.
+            </p>
+            <a
+              href="mailto:hello@raghusempire.com"
+              className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              <Mail className="w-4 h-4" />
+              hello@raghusempire.com
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════ FOOTER ═══════ */}
+      <footer className="border-t border-border/20 py-8 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <Crown className="w-4 h-4 text-muted-foreground" />
+            <span className="text-sm font-semibold text-foreground">Raghu's Empire</span>
+          </div>
+          <p className="text-xs text-muted-foreground">© 2025 Raghu's Empire. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };

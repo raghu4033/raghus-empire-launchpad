@@ -3,14 +3,14 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DashboardLayout from "./components/DashboardLayout";
 import Index from "./pages/Index";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Empire from "./pages/Empire";
-import Vision from "./pages/Vision";
-import Contact from "./pages/Contact";
+import BusinessPage from "./pages/BusinessPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
+import SettingsPage from "./pages/SettingsPage";
 import CompanyLogin from "./pages/CompanyLogin";
 import NotFound from "./pages/NotFound";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -20,14 +20,21 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/empire" element={<Empire />} />
-          <Route path="/vision" element={<Vision />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/login/:company" element={<CompanyLogin />} />
-          <Route path="*" element={<NotFound />} />
+          <Route
+            path="*"
+            element={
+              <DashboardLayout>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/:business" element={<BusinessPage />} />
+                  <Route path="/analytics" element={<AnalyticsPage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </DashboardLayout>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

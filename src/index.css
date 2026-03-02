@@ -2,93 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 215 50% 12%;
-
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 215 50% 12%;
-
+    --card-foreground: 220 20% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 50% 12%;
-
-    --primary: 215 50% 12%;
-    --primary-foreground: 43 96% 56%;
-
-    --secondary: 43 96% 56%;
-    --secondary-foreground: 215 50% 12%;
-
-    --muted: 210 20% 88%;
-    --muted-foreground: 215 25% 35%;
-
-    --accent: 43 96% 56%;
-    --accent-foreground: 215 50% 12%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 215 20% 85%;
-    --input: 215 20% 85%;
-    --ring: 215 50% 12%;
-
-    --radius: 1rem;
-
-    /* Custom tokens - PROFESSIONAL EXECUTIVE THEME */
-    --empire-navy: 215 50% 12%;
-    --empire-navy-deep: 220 55% 8%;
-    --empire-navy-mid: 215 45% 18%;
-    --empire-navy-light: 215 35% 28%;
-    --empire-gold: 43 96% 56%;
-    --empire-gold-elegant: 40 90% 50%;
-    --empire-gold-muted: 43 75% 48%;
-    
-    /* Gradients - PROFESSIONAL & POWERFUL */
-    --gradient-empire: linear-gradient(135deg, hsl(220 55% 8%) 0%, hsl(215 50% 12%) 50%, hsl(215 45% 18%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%) 0%, hsl(40 90% 50%) 100%);
-    --gradient-royal: linear-gradient(135deg, hsl(215 50% 12%) 0%, hsl(215 45% 22%) 100%);
-    --gradient-radial: radial-gradient(circle at 50% 50%, hsl(43 96% 56% / 0.08) 0%, transparent 70%);
-    --gradient-power: radial-gradient(circle at 30% 30%, hsl(215 45% 18% / 0.3) 0%, transparent 60%);
-    
-    /* Shadows - EXECUTIVE LUXURY */
-    --shadow-glow: 0 0 40px hsl(43 96% 56% / 0.3);
-    --shadow-glass: 0 8px 32px hsl(215 50% 12% / 0.15);
-    --shadow-luxury: 0 20px 60px hsl(215 50% 12% / 0.2);
-    --shadow-gold: 0 0 30px hsl(43 96% 56% / 0.4);
+    --popover-foreground: 220 20% 10%;
+    --primary: 220 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 20% 10%;
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 220 15% 92%;
+    --accent-foreground: 220 20% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 220 70% 50%;
+    --radius: 0.75rem;
+    --sidebar-background: 220 20% 97%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 220 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 92%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 220 70% 50%;
   }
 
   .dark {
-    --background: 215 50% 8%;
-    --foreground: 43 96% 56%;
+    --background: 224 28% 7%;
+    --foreground: 220 15% 90%;
+    --card: 224 25% 10%;
+    --card-foreground: 220 15% 90%;
+    --popover: 224 25% 10%;
+    --popover-foreground: 220 15% 90%;
+    --primary: 220 70% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 224 20% 15%;
+    --secondary-foreground: 220 15% 85%;
+    --muted: 224 20% 14%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 224 20% 15%;
+    --accent-foreground: 220 15% 85%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 224 15% 16%;
+    --input: 224 15% 16%;
+    --ring: 220 70% 55%;
+    --radius: 0.75rem;
+    --sidebar-background: 224 30% 6%;
+    --sidebar-foreground: 220 15% 70%;
+    --sidebar-primary: 220 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 20% 12%;
+    --sidebar-accent-foreground: 220 15% 85%;
+    --sidebar-border: 224 15% 14%;
+    --sidebar-ring: 220 70% 55%;
 
-    --card: 215 50% 10%;
-    --card-foreground: 43 96% 56%;
+    /* Brand accent colors */
+    --brand-pattrnly: 0 72% 51%;
+    --brand-woodeen: 14 82% 28%;
+    --brand-jewelfox: 240 7% 14%;
+    --brand-developer: 220 80% 50%;
 
-    --popover: 215 50% 10%;
-    --popover-foreground: 43 96% 56%;
-
-    --primary: 43 96% 56%;
-    --primary-foreground: 215 50% 12%;
-
-    --secondary: 215 45% 18%;
-    --secondary-foreground: 43 96% 56%;
-
-    --muted: 215 35% 22%;
-    --muted-foreground: 43 75% 70%;
-
-    --accent: 215 45% 18%;
-    --accent-foreground: 43 96% 56%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 43 96% 56%;
-
-    --border: 215 35% 22%;
-    --input: 215 35% 22%;
-    --ring: 43 96% 56%;
+    /* Glass effect tokens */
+    --glass-bg: 224 25% 10% / 0.6;
+    --glass-border: 224 15% 20% / 0.5;
   }
 }
 
@@ -96,57 +80,54 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body antialiased;
   }
-  
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
 }
 
 @layer utilities {
-  .glassmorphism {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20;
-    box-shadow: var(--shadow-glass);
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-2xl;
+    box-shadow: 0 4px 24px hsl(224 28% 4% / 0.3), inset 0 1px 0 hsl(220 15% 90% / 0.05);
   }
-  
-  .glow-text {
-    text-shadow: 0 0 20px hsl(var(--empire-gold) / 0.6), 0 0 40px hsl(var(--empire-gold) / 0.3);
+
+  .glass-sidebar {
+    @apply bg-card/40 backdrop-blur-2xl border-r border-border/30;
   }
-  
-  .animate-shimmer {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--empire-gold) / 0.3) 50%,
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 3s infinite;
+
+  .glow-blue {
+    box-shadow: 0 0 30px hsl(220 70% 55% / 0.15), 0 0 60px hsl(220 70% 55% / 0.05);
   }
-  
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
+
+  .glow-brand {
+    box-shadow: 0 0 20px hsl(var(--brand-color) / 0.2);
   }
-  
-  @keyframes glow {
-    0%, 100% {
-      filter: drop-shadow(0 0 20px hsl(var(--empire-gold) / 0.6));
-    }
-    50% {
-      filter: drop-shadow(0 0 35px hsl(var(--empire-gold) / 0.9));
-    }
+
+  .stat-gradient {
+    background: linear-gradient(135deg, hsl(224 25% 12%) 0%, hsl(224 25% 8%) 100%);
   }
-  
-  .animate-glow {
-    animation: glow 3s ease-in-out infinite;
+
+  @keyframes counter-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(220 70% 55% / 0.2); }
+    50% { box-shadow: 0 0 40px hsl(220 70% 55% / 0.4); }
   }
 
   @keyframes shake {
@@ -156,37 +137,31 @@ All colors MUST be HSL.
     60% { transform: translateX(-4px); }
     80% { transform: translateX(4px); }
   }
-  
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
   }
-  
+
   .animate-fade-in {
-    animation: fade-in 0.8s ease-out forwards;
+    animation: fade-in 0.5s ease-out forwards;
   }
-  
-  .animate-fade-in-delay {
-    opacity: 0;
-    animation: fade-in 0.8s ease-out 0.3s forwards;
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
   }
-  
-  /* Gradient animation utilities for premium buttons */
-  .bg-size-200 {
+
+  .animate-counter {
+    animation: counter-up 0.8s ease-out forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent 0%, hsl(220 70% 55% / 0.1) 50%, transparent 100%);
     background-size: 200% 100%;
-  }
-  
-  .bg-pos-0 {
-    background-position: 0% 0%;
-  }
-  
-  .bg-pos-100 {
-    background-position: 100% 0%;
+    animation: shimmer 3s infinite;
   }
 }
